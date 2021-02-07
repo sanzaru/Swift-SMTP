@@ -41,6 +41,7 @@ class TestDataSender: XCTestCase {
             x.fulfill()
         }
         waitForExpectations(timeout: testDuration)
+        sleep(1)
     }
 
     func testSendFile() {
@@ -52,6 +53,7 @@ class TestDataSender: XCTestCase {
             x.fulfill()
         }
         waitForExpectations(timeout: testDuration)
+        sleep(1)
     }
 
     func testSendHTML() {
@@ -63,6 +65,7 @@ class TestDataSender: XCTestCase {
             x.fulfill()
         }
         waitForExpectations(timeout: testDuration)
+        sleep(1)
     }
 
     func testSendHTMLAlternative() {
@@ -74,6 +77,7 @@ class TestDataSender: XCTestCase {
             x.fulfill()
         }
         waitForExpectations(timeout: testDuration)
+        sleep(1)
     }
 
     func testSendMultipleAttachments() {
@@ -86,6 +90,7 @@ class TestDataSender: XCTestCase {
             x.fulfill()
         }
         waitForExpectations(timeout: testDuration)
+        sleep(1)
     }
 
     func testSendNonASCII() {
@@ -96,6 +101,7 @@ class TestDataSender: XCTestCase {
             x.fulfill()
         }
         waitForExpectations(timeout: testDuration)
+        sleep(1)
     }
 
     func testSendRelatedAttachment() {
@@ -108,5 +114,6 @@ class TestDataSender: XCTestCase {
             x.fulfill()
         }
         waitForExpectations(timeout: testDuration)
+        sleep(1)
     }
 }

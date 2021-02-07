@@ -99,6 +99,7 @@ class TestMailSender: XCTestCase {
         group.wait()
         x.fulfill()
         waitForExpectations(timeout: testDuration)
+        sleep(1)
     }
 
     func testSendMailToMultipleRecipients() {
@@ -109,6 +110,7 @@ class TestMailSender: XCTestCase {
             x.fulfill()
         }
         waitForExpectations(timeout: testDuration)
+        sleep(1)
     }
 
     func testSendMailWithBcc() {
@@ -119,6 +121,7 @@ class TestMailSender: XCTestCase {
             x.fulfill()
         }
         waitForExpectations(timeout: testDuration)
+        sleep(1)
     }
 
     func testSendMailWithCc() {
@@ -129,6 +132,7 @@ class TestMailSender: XCTestCase {
             x.fulfill()
         }
         waitForExpectations(timeout: testDuration)
+        sleep(1)
     }
 
     func testSendMultipleMails() {
