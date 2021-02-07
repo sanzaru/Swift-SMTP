@@ -64,7 +64,6 @@ class TestTLSMode: XCTestCase {
                 domainName: domainName,
                 timeout: timeout
             )
-            XCTFail()
             expectation.fulfill()
         } catch {
             if case SMTPError.noAuthMethodsOrRequiresTLS = error {
