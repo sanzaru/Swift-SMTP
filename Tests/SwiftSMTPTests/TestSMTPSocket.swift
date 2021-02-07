@@ -33,7 +33,7 @@ class TestSMTPSocket: XCTestCase {
 
         do {
             _ = try SMTPSocket(
-                hostname: hostname,
+                hostname: smtpHost,
                 email: email,
                 password: "bad password",
                 port: port,
@@ -84,8 +84,8 @@ class TestSMTPSocket: XCTestCase {
 
         do {
             _ = try SMTPSocket(
-                hostname: hostname,
-                email: email,
+                hostname: smtpHost,
+                email: smtpUser,
                 password: password,
                 port: port,
                 tlsMode: .requireSTARTTLS,
@@ -107,8 +107,8 @@ class TestSMTPSocket: XCTestCase {
 
         do {
             _ = try SMTPSocket(
-                hostname: hostname,
-                email: email,
+                hostname: smtpHost,
+                email: smtpUser,
                 password: password,
                 port: port,
                 tlsMode: .requireSTARTTLS,
@@ -130,7 +130,7 @@ class TestSMTPSocket: XCTestCase {
 
         do {
             _ = try SMTPSocket(
-                hostname: hostname,
+                hostname: smtpHost,
                 email: email,
                 password: password,
                 port: 0,
@@ -153,8 +153,8 @@ class TestSMTPSocket: XCTestCase {
 
         do {
             _ = try SMTPSocket(
-                hostname: hostname,
-                email: email,
+                hostname: smtpHost,
+                email: smtpUser,
                 password: password,
                 port: port,
                 tlsMode: .requireSTARTTLS,

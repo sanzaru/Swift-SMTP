@@ -23,9 +23,25 @@ import Foundation
 
 let testDuration: Double = 15
 
-// 📧📧📧 Fill in your own SMTP login info for local testing
-// ⚠️⚠️⚠️ DO NOT CHECK IN YOUR EMAIL CREDENTALS!!!
+/*
+    📧📧📧 How to fill in your own SMTP login info for local testing
+
+    Set up your email credentials inside the scheme environment variables section.
+
+    Available variables:
+    --------------------
+        EMAIL:    The email address to use (e.g. foo@bar.com)
+        PASSWORD: Your SMTP password
+        SMTPHOST: Distinct SMTP hostname. If not set the default will be taken
+        SMTPUSER: SMTP username as some SMTP providers require distinct user names for login.
+                  If not set the email will be used for login.
+
+
+    ⚠️⚠️⚠️ DO NOT CHECK IN YOUR EMAIL CREDENTALS!!! ⚠️⚠️⚠️
+    ⚠️⚠️⚠️ DO NOT FILL IN YOUR CREDENTIALS BELOW - USE ENVIRONMENT VARIABLES IN SCHEME INSTEAD ⚠️⚠️⚠️
+*/
 let hostname = "smtp.gmail.com"
+let mySMTPUser: String? = nil
 let myEmail: String? = nil
 let myPassword: String? = nil
 let port: Int32 = 587
@@ -55,6 +71,24 @@ let password: String = {
         fatalError("Please provide email credentials for local testing.")
     }
     return password
+}()
+
+let smtpHost: String = {
+    guard let host = ProcessInfo.processInfo.environment["SMTPHOST"] else {
+        return hostname
+    }
+
+    return host
+}()
+
+let smtpUser: String = {
+    if let user = mySMTPUser {
+        return user
+    }
+    guard let user = ProcessInfo.processInfo.environment["SMTPUSER"] else {
+        return email
+    }
+    return user
 }()
 
 let senderEmailDomain: String = {
@@ -89,7 +123,7 @@ let certPassword = "kitura"
 let tlsConfiguration = TLSConfiguration(withChainFilePath: cert, withPassword: certPassword)
 #endif
 
-let smtp = SMTP(hostname: hostname, email: email, password: password)
+let smtp = SMTP(hostname: smtpHost, email: smtpUser, password: password)
 let from = Mail.User(name: "Dr. Light", email: email)
 let to = Mail.User(name: "Megaman", email: email)
 let to2 = Mail.User(name: "Roll", email: email)
